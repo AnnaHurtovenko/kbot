@@ -2,6 +2,9 @@
 https://t.me/annahurtovenko_bot
 
 All the commands I used:
+ ```bash
+    go version
+ ```
 go version
 go mod init github.com/AnnaHurtovenko/kbot
 go install github.com/spf13/cobra-cli@latest
@@ -29,6 +32,7 @@ go build -ldflags "-X="github.com/AnnaHurtovenko/kbot/cmd.appVersion=v1.0.2
 git add .
 git commit -m "create telebot"
 git push origin main
+
 
 Telegram:
 github.com/tucnak/telebot
