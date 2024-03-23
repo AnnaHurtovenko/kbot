@@ -5,7 +5,6 @@ All the commands I used:
  ```bash
     go version
  ```
-go version
  ```bash
 go mod init github.com/AnnaHurtovenko/kbot
  ```
@@ -89,12 +88,16 @@ git push origin main
 
 
 Telegram:
+ ```bash
 github.com/tucnak/telebot
+ ```
+ ```bash
 https://t.me/BotFather
-| 1 |You choose /newbot|
-| 2 |You name the bot|
-| 3 |Write the name of the link to the bot - annahurtovenko_bot|
-| 4 |Copy the api |
+ ```
+1.You choose /newbot
+2.You name the bot
+3.Write the name of the link to the bot - annahurtovenko_bot
+4.Copy the api 
 
 Resources:
  ```bash
