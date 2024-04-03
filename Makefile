@@ -26,7 +26,20 @@ push:
 	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
-	rm -rf kbot
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 get:
 	go get 
+
+linux:
+	GOOS=linux GOARCH=amd64 go build -v -o kbot -ldflags "-X=github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}"
+
+arm:
+	GOOS=linux GOARCH=arm64 go build -v -o kbot -ldflags "-X=github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}"
+
+macos:
+	GOOS=darwin GOARCH=amd64 go build -v -o kbot -ldflags "-X=github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}"
+
+
+windows:
+	GOOS=windows GOARCH=amd64 go build -v -o kbot -ldflags "-X=github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}"
