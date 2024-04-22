@@ -10,7 +10,6 @@ image:
   tag: "v0.0.0-c866920-arm64"
   arch: amd64
 
-
 secret:
   name: "kbot"
   env: "TELE_TOKEN"
@@ -19,15 +18,7 @@ secret:
 securityContext:
   privileged: true
 
-autoscaling:
-  enabled: true
 
-serviceAccount:
-  create: true
-
-service:
-  port: default
-  type: NodePort
 
 
                 
