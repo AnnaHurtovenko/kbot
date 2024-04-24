@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - develop
+
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: ${{ github.repository }}
   
 jobs:
   ci:
@@ -24,9 +28,9 @@ jobs:
         run: make test
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@dckr_pat_pqN6NS41BAugxSiGjxyh0Hb14jk
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
@@ -34,6 +38,7 @@ jobs:
       - name: Build&Push
         env:
           APP: "kbot"
+          REGISTRY: "${{ env.REGISTRY }}/${{ github.actor }}"
         run: make image push 
       
   cd:
@@ -49,10 +54,9 @@ jobs:
 
     - uses: mikefarah/yq@master
       with:
-        cmd: yq -i '.image.tag=strenv(VERSION) | .image.arch=strenv(TARGETARCH)' helm/values.yaml
+        cmd: yq -i '.image.tag=strenv(VERSION)' helm/values.yaml
     - run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
         git commit -am "update version $VERSION"
         git push
-  

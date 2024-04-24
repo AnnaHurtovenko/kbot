@@ -5,10 +5,10 @@
 replicaCount: 1
 image:
   registry: "ghcr.io"
-  repository: 22annagurt11
+  repository: AnnaHurtovenko/kbot
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.0-c866920-arm64-f8ce84c"
-  arch: ""
+  tag: ""
+  arch: "amd64"
   os: linux
 secret:
   name: "kbot"
