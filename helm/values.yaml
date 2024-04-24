@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   repository: 22annagurt11
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.0-c866920-arm64-447e5a2"
+  tag: "v0.0.0-c866920-arm64-2bba467"
   arch: ""
 secret:
   name: "kbot"
