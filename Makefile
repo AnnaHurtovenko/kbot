@@ -1,5 +1,5 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY := 22annagurt11
+REGISTRY := ghcr.io/AnnaHurtovenko
 VERSION=$(shell git describe --tags --abbrev=0 --always)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
 TARGETARCH=arm64
@@ -20,13 +20,13 @@ echo-version:
 	echo ${VERSION}
 
 image: echo-version
-	docker build . -t ${REGISTRY}/${APP}:v${VERSION}-${shell git rev-parse --short HEAD}-${TARGETOS}-${TARGETARCH}
+	docker build . -t ${REGISTRY}/${APP}:v${VERSION}-${TARGETOS}-${TARGETARCH}
 
 push:
-	docker push ${REGISTRY}/${APP}:v${VERSION}-${shell git rev-parse --short HEAD}-${TARGETOS}-${TARGETARCH}
+	docker push ${REGISTRY}/${APP}:v${VERSION}-${TARGETOS}-${TARGETARCH}
 
 clean:
-	docker rmi ${REGISTRY}/${APP}:v${VERSION}-${shell git rev-parse --short HEAD}-${TARGETOS}-${TARGETARCH}
+	docker rmi ${REGISTRY}/${APP}:v${VERSION}-${TARGETOS}-${TARGETARCH}
 
 get:
 	go get 
