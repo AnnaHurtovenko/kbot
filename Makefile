@@ -2,7 +2,7 @@ APP=$(shell basename $(shell git remote get-url origin))
 REGISTRY=22annagurt11
 VERSION=$(shell git describe --tags --abbrev=0 2>/dev/null || echo 'v0.0.0')-$(shell git rev-parse --short HEAD | sed 's/^-//')
 TARGETOS=linux
-TARGETARCH=arm64
+TARGETARCH=amd64
 
 format:
 	gofmt -s -w ./

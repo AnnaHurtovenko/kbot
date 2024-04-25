@@ -6,8 +6,8 @@ replicaCount: 1
 image:
   repository: 22annagurt11
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.0-c866920-arm64-447e5a2"
-  arch: ""
+  tag: "v1.0.0-c866920"
+  arch: "amd64"
 secret:
   name: "kbot"
   env: "TELE_TOKEN"
