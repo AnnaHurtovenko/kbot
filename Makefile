@@ -5,7 +5,7 @@ TARGETOS=linux
 TARGETARCH=amd64
 
 define code_builder
-	CGO_ENABLED=0 GOOS=$1 GOARCH=$2 go build -v -o kbot -ldflags "-X="github.com//AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}
+	CGO_ENABLED=0 GOOS=$1 GOARCH=$2 go build -v -o kbot -ldflags "-X="github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}
 endef
 
 define image_builder
