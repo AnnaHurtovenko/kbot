@@ -1,6 +1,6 @@
 APP=$(shell basename $(shell git remote get-url origin))
 REGISTRY := ghcr.io/annahurtovenko
-VERSION=$(shell git describe --tags --abbrev=0 2>/dev/null || echo 'v1.0.0' | sed 's/-arm64//' | sed 's/-//')
+VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
 TARGETARCH=amd64
 
