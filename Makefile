@@ -1,6 +1,6 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=22annagurt11
-VERSION=$(shell git describe --tags --abbrev=0 2>/dev/null || echo 'v0.0.0')-$(shell git rev-parse --short HEAD | sed 's/^-//')
+REGISTRY := ghcr.io/annahurtovenko
+VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
 TARGETARCH=amd64
 
@@ -20,13 +20,13 @@ echo-version:
 	echo ${VERSION}
 
 image: echo-version
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 clean:
-	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 get:
 	go get 
@@ -39,7 +39,6 @@ arm:
 
 macos:
 	GOOS=darwin GOARCH=amd64 go build -v -o kbot -ldflags "-X=github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}"
-
 
 windows:
 	GOOS=windows GOARCH=amd64 go build -v -o kbot -ldflags "-X=github.com/AnnaHurtovenko/kbot/cmd.appVersion=${VERSION}"
